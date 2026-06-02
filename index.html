@@ -127,9 +127,16 @@
 
   /* ---------- home ---------- */
   .pad { padding: 0 16px; }
-  .h-header { padding: 6px 22px 10px; }
-  .h-app { font-size: 28px; font-weight: 900; color: var(--orange); letter-spacing: -0.02em; }
-  .h-date { font-size: 13px; color: var(--txt3); margin-top: 3px; }
+  /* topbar: 로고 + 햄버거 */
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 10px 18px 8px; }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand-badge { width: 34px; height: 34px; border-radius: 10px; background: var(--orange); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .brand-badge span { font-size: 16px; font-weight: 900; color: #fff; letter-spacing: -0.04em; }
+  .brand-name { font-size: 21px; font-weight: 900; color: var(--orange); letter-spacing: -0.03em; line-height: 1; }
+  .brand-time { font-size: 12px; color: var(--txt3); margin-top: 2px; }
+  .hamburger { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--txt2); font-size: 22px; cursor: pointer; }
+  .hamburger:active { background: var(--card); }
+  .h-date { font-size: 13px; color: var(--txt3); }
   .streak { background: var(--card); border-radius: 20px; margin: 4px 16px 14px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; }
   .streak-num { font-size: 38px; font-weight: 900; color: var(--orange); line-height: .95; letter-spacing: -0.02em; }
   .streak-label { font-size: 12px; color: var(--txt3); margin-top: 3px; }
@@ -146,16 +153,54 @@
   .tl-time { font-size: 18px; font-weight: 700; color: var(--txt); }
   .tl-name { font-size: 11px; color: var(--txt3); margin-top: 2px; }
   .tl-arrow { font-size: 14px; color: var(--orange); padding-bottom: 13px; }
-  .cta { background: var(--orange); border-radius: 16px; margin: 0 16px 14px; padding: 15px; text-align: center; display: flex; flex-direction: column; gap: 3px; }
+  .cta { background: var(--orange); border-radius: 16px; margin: 0 16px 14px; padding: 16px; text-align: center; display: flex; flex-direction: column; gap: 3px; }
   .cta-text { font-size: 15px; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: center; gap: 6px; }
   .cta-sub { font-size: 12px; color: rgba(255,255,255,0.82); }
   .status { margin: 0 16px 14px; background: var(--card); border-radius: 14px; padding: 12px 16px; display: flex; align-items: flex-start; gap: 10px; }
   .dot { width: 8px; height: 8px; border-radius: 50%; background: #48BB78; margin-top: 3px; flex-shrink: 0; }
   .status-text { font-size: 12px; color: var(--txt2); line-height: 1.6; }
 
+  /* slide-in 메뉴 (햄버거) */
+  .menu-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 40; }
+  .menu-overlay.open { opacity: 1; pointer-events: auto; }
+  .menu-panel { position: absolute; top: 0; right: 0; bottom: 0; width: 70%; max-width: 280px; background: #16263a; transform: translateX(100%); transition: transform .25s ease; z-index: 41; padding: 24px 20px; display: flex; flex-direction: column; }
+  .menu-panel.open { transform: translateX(0); }
+  .menu-head { font-size: 18px; font-weight: 900; color: var(--orange); margin-bottom: 24px; }
+  .menu-item { padding: 14px 8px; font-size: 15px; color: var(--txt); border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 12px; }
+  .menu-item:active { background: var(--card2); }
+  .menu-item .ico { font-size: 19px; color: var(--txt3); }
+
+  /* 통계 페이지 */
+  .stats-page { padding: 4px 16px 16px; }
+  .sp-card { background: var(--card); border-radius: 18px; padding: 22px; text-align: center; margin-bottom: 12px; }
+  .sp-num { font-size: 48px; font-weight: 900; color: var(--orange); line-height: 1; letter-spacing: -0.02em; }
+  .sp-label { font-size: 13px; color: var(--txt3); margin-top: 6px; }
+  .sp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+  .sp-mini { background: var(--card); border-radius: 14px; padding: 16px; text-align: center; }
+  .sp-mini-num { font-size: 24px; font-weight: 900; color: var(--txt); letter-spacing: -0.02em; }
+  .sp-mini-label { font-size: 11px; color: var(--txt3); margin-top: 3px; }
+  .sp-sec-label { font-size: 12px; color: var(--txt3); margin-bottom: 12px; }
+  .sp-week { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; background: var(--card); border-radius: 16px; padding: 18px 14px 12px; height: 150px; }
+  .sp-day { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
+  .sp-bar { width: 70%; background: var(--orange); border-radius: 5px; min-height: 6px; }
+  .sp-bar.sp-off { background: #2a3a4a; }
+  .sp-dname { font-size: 11px; color: var(--txt3); margin-top: 8px; }
+
+  /* 설정 페이지 */
+  .set-list { padding: 4px 16px 16px; }
+  .set-group-label { font-size: 12px; color: var(--txt3); margin: 18px 4px 8px; }
+  .set-group-label:first-child { margin-top: 4px; }
+  .set-row { background: var(--card); border-radius: 12px; padding: 15px 16px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; font-size: 14px; color: var(--txt); }
+  .set-row:active { background: var(--card2); }
+  .set-val { font-size: 14px; color: var(--txt3); }
+  .set-chev { font-size: 18px; color: var(--txt3); }
+  .set-toggle { width: 42px; height: 24px; border-radius: 12px; background: #2a3a4a; position: relative; flex-shrink: 0; }
+  .set-toggle::after { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: left .2s; }
+  .set-toggle.on { background: var(--orange); }
+  .set-toggle.on::after { left: 21px; }
+
   /* ---------- 퇴근 알림 ---------- */
-  .c-header { padding: 6px 22px 10px; display: flex; align-items: center; gap: 10px; }
-  .c-app { font-size: 18px; font-weight: 900; color: var(--orange); }
+  .c-header { padding: 10px 18px 8px; display: flex; align-items: center; gap: 10px; }
   .c-time { font-size: 13px; color: var(--txt3); margin-left: auto; }
   .push { background: var(--card); border-radius: 20px; margin: 4px 16px 14px; padding: 18px; }
   .push-top { display: flex; align-items: center; gap: 10px; margin-bottom: 11px; }
@@ -247,9 +292,15 @@
     <!-- ===== HOME ===== -->
     <div class="view" id="v-home">
       <div class="body">
-        <div class="h-header">
-          <div class="h-app">30분전</div>
-          <div class="h-date">화요일 · 오전 7:02</div>
+        <div class="topbar">
+          <div class="brand">
+            <div class="brand-badge"><span>30</span></div>
+            <div>
+              <div class="brand-name">30분전</div>
+              <div class="brand-time">화요일 · 오전 7:02</div>
+            </div>
+          </div>
+          <div class="hamburger tap" onclick="openMenu()" aria-label="메뉴"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></div>
         </div>
         <div class="streak">
           <div>
@@ -283,19 +334,17 @@
           <div class="status-text">어젯밤 23:27 취침 감지&nbsp;✓<br>오늘 06:28 알람 해제&nbsp;✓</div>
         </div>
       </div>
-      <div class="nav">
-        <div class="nav-tab active"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg><div class="nav-label">홈</div></div>
-        <div class="nav-tab"><svg class="ico" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg><div class="nav-label">통계</div></div>
-        <div class="nav-tab tap" onclick="go('commute')"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg><div class="nav-label">혼잡도</div></div>
-        <div class="nav-tab"><svg class="ico" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></svg><div class="nav-label">설정</div></div>
-      </div>
+      <div class="nav"><div class="nav-tab active" onclick="go('home')"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg><div class="nav-label">홈</div></div><div class="nav-tab tap" onclick="go('stats')"><svg class="ico" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg><div class="nav-label">통계</div></div><div class="nav-tab tap" onclick="go('commute')"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg><div class="nav-label">혼잡도</div></div><div class="nav-tab tap" onclick="go('settings')"><svg class="ico" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></svg><div class="nav-label">설정</div></div></div>
     </div>
 
     <!-- ===== 퇴근 알림 ===== -->
     <div class="view" id="v-commute">
       <div class="body">
         <div class="c-header">
-          <div class="c-app">30분전</div>
+          <div class="brand">
+            <div class="brand-badge"><span>30</span></div>
+            <div class="brand-name">30분전</div>
+          </div>
           <div class="c-time">오후 5:28</div>
         </div>
         <div class="push">
@@ -325,19 +374,17 @@
           어제 지하철에서 힘들었죠?<br>오늘 아침 일찍 나온 덕분에 여유있게 출근했잖아요 ☀️
         </div>
       </div>
-      <div class="nav">
-        <div class="nav-tab tap" onclick="go('home')"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg><div class="nav-label">홈</div></div>
-        <div class="nav-tab"><svg class="ico" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg><div class="nav-label">통계</div></div>
-        <div class="nav-tab active"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg><div class="nav-label">혼잡도</div></div>
-        <div class="nav-tab"><svg class="ico" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></svg><div class="nav-label">설정</div></div>
-      </div>
+      <div class="nav"><div class="nav-tab tap" onclick="go('home')"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg><div class="nav-label">홈</div></div><div class="nav-tab tap" onclick="go('stats')"><svg class="ico" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg><div class="nav-label">통계</div></div><div class="nav-tab active" onclick="go('commute')"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg><div class="nav-label">혼잡도</div></div><div class="nav-tab tap" onclick="go('settings')"><svg class="ico" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></svg><div class="nav-label">설정</div></div></div>
     </div>
 
     <!-- ===== 성공 보상 ===== -->
     <div class="view" id="v-reward">
       <div class="body" style="display:flex; flex-direction:column;">
         <div class="c-header" style="padding-bottom:0;">
-          <div class="c-app">30분전</div>
+          <div class="brand">
+            <div class="brand-badge"><span>30</span></div>
+            <div class="brand-name">30분전</div>
+          </div>
         </div>
         <div class="reward">
           <div class="badge"><svg class="ico" viewBox="0 0 24 24"><path d="M8 21l8 0"/><path d="M12 17l0 4"/><path d="M7 4l10 0"/><path d="M17 4v8a5 5 0 0 1 -10 0v-8"/><path d="M5 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M19 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/></svg></div>
@@ -355,12 +402,79 @@
           </div>
         </div>
       </div>
-      <div class="nav">
-        <div class="nav-tab active tap" onclick="go('home')"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg><div class="nav-label">홈</div></div>
-        <div class="nav-tab"><svg class="ico" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg><div class="nav-label">통계</div></div>
-        <div class="nav-tab tap" onclick="go('commute')"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg><div class="nav-label">혼잡도</div></div>
-        <div class="nav-tab"><svg class="ico" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></svg><div class="nav-label">설정</div></div>
+      <div class="nav"><div class="nav-tab active" onclick="go('home')"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg><div class="nav-label">홈</div></div><div class="nav-tab tap" onclick="go('stats')"><svg class="ico" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg><div class="nav-label">통계</div></div><div class="nav-tab tap" onclick="go('commute')"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg><div class="nav-label">혼잡도</div></div><div class="nav-tab tap" onclick="go('settings')"><svg class="ico" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></svg><div class="nav-label">설정</div></div></div>
+    </div>
+
+    <!-- ===== 통계 ===== -->
+    <div class="view" id="v-stats">
+      <div class="body">
+        <div class="topbar">
+          <div class="brand">
+            <div class="brand-badge"><span>30</span></div>
+            <div class="brand-name">통계</div>
+          </div>
+          <div class="hamburger tap" onclick="openMenu()" aria-label="메뉴"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></div>
+        </div>
+        <div class="stats-page">
+          <div class="sp-card">
+            <div class="sp-num">12</div>
+            <div class="sp-label">현재 연속 성공</div>
+          </div>
+          <div class="sp-grid">
+            <div class="sp-mini"><div class="sp-mini-num">28</div><div class="sp-mini-label">이번 달 성공</div></div>
+            <div class="sp-mini"><div class="sp-mini-num">93%</div><div class="sp-mini-label">달성률</div></div>
+            <div class="sp-mini"><div class="sp-mini-num">28h</div><div class="sp-mini-label">지옥철 회피</div></div>
+            <div class="sp-mini"><div class="sp-mini-num">650P</div><div class="sp-mini-label">총 포인트</div></div>
+          </div>
+          <div class="sp-sec-label">최근 7일</div>
+          <div class="sp-week">
+            <div class="sp-day"><div class="sp-bar" style="height:80%"></div><div class="sp-dname">월</div></div>
+            <div class="sp-day"><div class="sp-bar" style="height:95%"></div><div class="sp-dname">화</div></div>
+            <div class="sp-day"><div class="sp-bar" style="height:60%"></div><div class="sp-dname">수</div></div>
+            <div class="sp-day"><div class="sp-bar" style="height:100%"></div><div class="sp-dname">목</div></div>
+            <div class="sp-day"><div class="sp-bar" style="height:88%"></div><div class="sp-dname">금</div></div>
+            <div class="sp-day"><div class="sp-bar sp-off" style="height:20%"></div><div class="sp-dname">토</div></div>
+            <div class="sp-day"><div class="sp-bar" style="height:75%"></div><div class="sp-dname">일</div></div>
+          </div>
+        </div>
       </div>
+      <div class="nav"><div class="nav-tab tap" onclick="go('home')"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg><div class="nav-label">홈</div></div><div class="nav-tab active"><svg class="ico" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg><div class="nav-label">통계</div></div><div class="nav-tab tap" onclick="go('commute')"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg><div class="nav-label">혼잡도</div></div><div class="nav-tab tap" onclick="go('settings')"><svg class="ico" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></svg><div class="nav-label">설정</div></div></div>
+    </div>
+
+    <!-- ===== 설정 ===== -->
+    <div class="view" id="v-settings">
+      <div class="body">
+        <div class="topbar">
+          <div class="brand">
+            <div class="brand-badge"><span>30</span></div>
+            <div class="brand-name">설정</div>
+          </div>
+          <div class="hamburger tap" onclick="openMenu()" aria-label="메뉴"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></div>
+        </div>
+        <div class="set-list">
+          <div class="set-group-label">루틴</div>
+          <div class="set-row tap" onclick="go('onboarding')"><span>출근 목표 시간 변경</span><svg class="ico set-chev" viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></div>
+          <div class="set-row"><span>이동 시간</span><span class="set-val">1시간</span></div>
+          <div class="set-row"><span>준비 시간</span><span class="set-val">1시간</span></div>
+          <div class="set-row"><span>목표 수면 시간</span><span class="set-val">7시간</span></div>
+          <div class="set-group-label">알림</div>
+          <div class="set-row"><span>취침 알림</span><span class="set-toggle on"></span></div>
+          <div class="set-row"><span>퇴근 혼잡도 알림</span><span class="set-toggle on"></span></div>
+          <div class="set-group-label">정보</div>
+          <div class="set-row"><span>버전</span><span class="set-val">0.1.0</span></div>
+        </div>
+      </div>
+      <div class="nav"><div class="nav-tab tap" onclick="go('home')"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg><div class="nav-label">홈</div></div><div class="nav-tab tap" onclick="go('stats')"><svg class="ico" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg><div class="nav-label">통계</div></div><div class="nav-tab tap" onclick="go('commute')"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg><div class="nav-label">혼잡도</div></div><div class="nav-tab active"><svg class="ico" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></svg><div class="nav-label">설정</div></div></div>
+    </div>
+
+    <!-- 슬라이드 메뉴 -->
+    <div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
+    <div class="menu-panel" id="menu-panel">
+      <div class="menu-head">30분전</div>
+      <div class="menu-item" onclick="closeMenu();go('home')"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg>홈</div>
+      <div class="menu-item" onclick="closeMenu();go('stats')"><svg class="ico" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg>통계</div>
+      <div class="menu-item" onclick="closeMenu();go('commute')"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg>퇴근 혼잡도</div>
+      <div class="menu-item" onclick="closeMenu();go('settings')"><svg class="ico" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></svg>설정</div>
     </div>
 
   </div>
@@ -372,9 +486,18 @@
   function go(name) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     document.getElementById('v-' + name).classList.add('active');
-    document.querySelector('.body').scrollTop = 0;
+    document.querySelectorAll('.body').forEach(b => b.scrollTop = 0);
     var hint = document.getElementById('hint');
     if (hint) { hint.style.opacity = '0'; }
+  }
+
+  function openMenu() {
+    document.getElementById('menu-overlay').classList.add('open');
+    document.getElementById('menu-panel').classList.add('open');
+  }
+  function closeMenu() {
+    document.getElementById('menu-overlay').classList.remove('open');
+    document.getElementById('menu-panel').classList.remove('open');
   }
 
   function pad(n) { return String(n).padStart(2, '0'); }
