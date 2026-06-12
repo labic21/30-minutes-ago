@@ -91,7 +91,7 @@
 
   .body { flex: 1; overflow-y: auto; min-height: 0; display: flex; flex-direction: column; }
   .body-spacer { flex: 1 1 auto; min-height: 12px; }
-  .body.home-body { justify-content: space-between; padding-bottom: 8px; }
+  .body.home-body { padding-bottom: 8px; }
   .body.home-body > .topbar { margin-bottom: 4px; }
   .body::-webkit-scrollbar { width: 0; }
 
@@ -119,7 +119,7 @@
   .ob-time { font-size: 44px; font-weight: 900; color: var(--orange); letter-spacing: -0.02em; }
   .ob-time-label { font-size: 12px; color: var(--txt3); margin-top: 4px; }
   .ob-stepper { display: flex; justify-content: center; gap: 28px; margin-top: 10px; }
-  .ob-step-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--card2); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--orange); font-size: 22px; }
+  .ob-step-btn { width: 52px; height: 52px; border-radius: 50%; background: #27394d; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--orange); font-size: 26px; }
   .ob-result { background: var(--card2); border-radius: 16px; padding: 14px; }
   .ob-assump { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; color: var(--txt3); margin-bottom: 0; white-space: nowrap; }
   .ob-dot { color: #3a4a5a; }
@@ -134,24 +134,25 @@
   /* ---------- home ---------- */
   .pad { padding: 0 16px; }
   /* topbar: 로고 + 햄버거 */
-  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px 12px; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px 12px 28px; }
   .brand { display: flex; align-items: center; gap: 9px; }
   .brand-badge { width: 34px; height: 34px; border-radius: 10px; background: var(--orange); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .brand-badge span { font-size: 16px; font-weight: 900; color: #fff; letter-spacing: -0.04em; }
-  .brand-name { font-size: 21px; font-weight: 900; color: var(--orange); letter-spacing: -0.03em; line-height: 1; }
+  .brand-name { font-size: 21px; font-weight: 900; color: #ffffff; letter-spacing: -0.03em; line-height: 1; }
   .brand-time { font-size: 12px; color: var(--txt3); margin-top: 2px; }
   .hamburger { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--txt2); font-size: 22px; cursor: pointer; }
   .hamburger:active { background: var(--card); }
   .h-date { font-size: 13px; color: var(--txt3); }
-  .streak { background: var(--card); border-radius: 20px; margin: 6px 16px 18px; padding: 24px 20px; display: flex; align-items: center; justify-content: space-between; }
-  .streak-num { font-size: 42px; font-weight: 900; color: var(--orange); line-height: .95; letter-spacing: -0.02em; }
-  .streak-label { font-size: 12px; color: var(--txt3); margin-top: 3px; }
-  .grid-title { font-size: 11px; color: var(--txt3); margin-bottom: 6px; text-align: right; }
+  .streak { background: var(--card); border-radius: 20px; margin: 8px 16px 18px; padding: 24px 20px; display: flex; align-items: center; justify-content: space-between; }
+.streak > div:first-child { margin-left: 20px; }
+  .streak-num { font-size: 52px; font-weight: 900; color: var(--orange); line-height: .95; letter-spacing: -0.02em; }
+  .streak-label { font-size: 14px; color: var(--txt3); margin-top: 4px; }
+  .grid-title { font-size: 12px; color: var(--txt3); margin-bottom: 8px; text-align: right; }
   .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-  .cell { width: 11px; height: 11px; border-radius: 3px; }
-  .cell.on { background: var(--orange); }
-  .cell.off { background: #2a3a4a; }
-  .cell.today { background: #2d3d4d; border: 1.5px solid var(--orange); }
+  .cell { width: 16px; height: 16px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; line-height: 1; }
+  .cell.on { background: var(--orange); color: #3d2400; }
+  .cell.off { background: #2a3a4a; color: #5b6f82; }
+  .cell.today { background: #2d3d4d; border: 1.5px solid var(--orange); color: var(--orange); }
   .sec { margin: 0 16px 12px; }
   .sec-label { font-size: 12px; color: var(--txt3); margin-bottom: 9px; }
   .timeline { display: flex; align-items: center; }
@@ -163,6 +164,7 @@
   .routine-card { margin: 0 16px 18px; background: var(--card); border-radius: 18px; padding: 22px 18px 18px; }
   .routine-card .sec-label { margin-bottom: 14px; }
   .routine-status { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 9px; }
+  .routine-status.routine-status-sub { margin-top: 9px; padding-top: 0; border-top: none; }
   .cta { background: var(--orange); border-radius: 18px; margin: 0 16px 18px; padding: 23px; text-align: center; display: flex; flex-direction: column; gap: 4px; }
   .cta-text { font-size: 16px; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: center; gap: 6px; }
   .cta-sub { font-size: 12px; color: rgba(255,255,255,0.82); }
@@ -184,13 +186,13 @@
   .menu-overlay.open { opacity: 1; pointer-events: auto; }
   .menu-panel { position: absolute; top: 0; right: 0; bottom: 0; width: 70%; max-width: 280px; background: #16263a; transform: translateX(100%); transition: transform .25s ease; z-index: 41; padding: 24px 20px; display: flex; flex-direction: column; }
   .menu-panel.open { transform: translateX(0); }
-  .menu-head { font-size: 18px; font-weight: 900; color: var(--orange); margin-bottom: 24px; }
+  .menu-head { font-size: 18px; font-weight: 900; color: #ffffff; margin-bottom: 24px; display: flex; align-items: center; gap: 9px; }
   .menu-item { padding: 14px 8px; font-size: 15px; color: var(--txt); border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 12px; }
   .menu-item:active { background: var(--card2); }
   .menu-item .ico { font-size: 19px; color: var(--txt3); }
 
   /* 통계 페이지 */
-  .stats-page { padding: 4px 16px 16px; }
+  .stats-page { padding: 12px 16px 16px; }
   .sp-card { background: var(--card); border-radius: 18px; padding: 22px; text-align: center; margin-bottom: 12px; }
   .sp-num { font-size: 48px; font-weight: 900; color: var(--orange); line-height: 1; letter-spacing: -0.02em; }
   .sp-label { font-size: 13px; color: var(--txt3); margin-top: 6px; }
@@ -201,14 +203,14 @@
   .sp-sec-label { font-size: 12px; color: var(--txt3); margin-bottom: 12px; }
   .sp-week { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; background: var(--card); border-radius: 16px; padding: 18px 14px 12px; height: 150px; }
   .sp-day { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
-  .sp-bar { width: 70%; background: var(--orange); border-radius: 5px; min-height: 6px; }
+  .sp-bar { width: 42%; background: var(--orange); border-radius: 4px; min-height: 6px; }
   .sp-bar.sp-off { background: #2a3a4a; }
   .sp-dname { font-size: 11px; color: var(--txt3); margin-top: 8px; }
 
   /* 설정 페이지 */
-  .set-list { padding: 4px 16px 16px; }
+  .set-list { padding: 12px 16px 16px; }
   .set-group-label { font-size: 12px; color: var(--txt3); margin: 18px 4px 8px; }
-  .set-group-label:first-child { margin-top: 4px; }
+  .set-group-label:first-child { margin-top: 0; }
   .set-row { background: var(--card); border-radius: 12px; padding: 15px 16px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; font-size: 14px; color: var(--txt); }
   .set-row:active { background: var(--card2); }
   .set-val { font-size: 14px; color: var(--txt3); }
@@ -222,7 +224,7 @@
   .c-header { padding: 10px 18px 8px; display: flex; align-items: center; gap: 10px; }
   .c-time { font-size: 13px; color: var(--txt3); margin-left: auto; }
   .c-header .hamburger { margin-left: 4px; }
-  .push { background: var(--card); border-radius: 20px; margin: 4px 16px 14px; padding: 18px; }
+  .push { background: var(--card); border-radius: 20px; margin: 8px 16px 14px; padding: 18px; }
   .push-top { display: flex; align-items: center; gap: 10px; margin-bottom: 11px; }
   .push-icon { width: 38px; height: 38px; border-radius: 11px; background: var(--orange); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #fff; font-size: 20px; }
   .push-app { font-size: 13px; font-weight: 700; color: var(--txt); }
@@ -230,8 +232,8 @@
   .push-title { font-size: 16px; font-weight: 700; color: #f0f4f8; margin-bottom: 6px; line-height: 1.35; }
   .push-body { font-size: 13px; color: var(--txt2); line-height: 1.55; }
   .push-actions { display: flex; gap: 10px; margin-top: 14px; }
-  .btn-ok { flex: 1; background: var(--orange); border-radius: 11px; padding: 11px; text-align: center; font-size: 14px; font-weight: 700; color: #fff; cursor: pointer; }
-  .btn-skip { flex: 1; background: #243545; border-radius: 11px; padding: 11px; text-align: center; font-size: 14px; color: #8595a5; cursor: pointer; }
+  .btn-ok { flex: 1; background: var(--orange); border-radius: 11px; padding: 15px 11px; text-align: center; font-size: 14px; font-weight: 700; color: #fff; cursor: pointer; }
+  .btn-skip { flex: 1; background: #243545; border-radius: 11px; padding: 15px 11px; text-align: center; font-size: 14px; color: #8595a5; cursor: pointer; }
   .crowd { margin: 0 16px 14px; }
   .crowd-label { font-size: 12px; color: var(--txt3); margin-bottom: 14px; }
   .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
@@ -279,6 +281,32 @@
     padding: 8px 16px; border-radius: 20px; z-index: 50; pointer-events: none;
     transition: opacity .4s; white-space: nowrap;
   }
+
+  /* 혼잡도 페이지: 홈화면과 동일한 막대 간격 */
+  #v-commute .crowd { display: flex; flex-direction: column; min-height: 0; margin-top: 4px; }
+  #v-commute .crowd-label { margin-bottom: 16px; flex-shrink: 0; }
+  #v-commute .crowd-bars { display: flex; flex-direction: column; }
+  #v-commute .crowd-bars .bar-row { margin-bottom: 12px; }
+  #v-commute .crowd-bars .bar-row:last-child { margin-bottom: 0; }
+  #v-commute .empathy { margin-top: 18px; flex-shrink: 0; }
+
+  /* 혼잡도: 실시간 열차 위치 미니 노선도 */
+  .train-status { background: var(--card); border-radius: 18px; padding: 15px 22px 18px; margin: 30px 16px 2px; }
+  .train-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+  .train-h-title { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; color: var(--txt); }
+  .train-h-title .ico { font-size: 16px; color: var(--orange); }
+  .train-eta { font-size: 12px; font-weight: 700; color: var(--orange); }
+  .train-track { position: relative; height: 12px; margin: 0 6px; }
+  .train-rail { position: absolute; top: 50%; left: 0; right: 0; height: 3px; background: #2a3a4a; border-radius: 2px; transform: translateY(-50%); }
+  .train-rail-fill { position: absolute; top: 50%; left: 0; height: 3px; background: var(--orange); border-radius: 2px; transform: translateY(-50%); }
+  .train-dot { position: absolute; top: 50%; width: 11px; height: 11px; border-radius: 50%; background: #3a4d60; transform: translate(-50%,-50%); z-index: 1; }
+  .train-dot.active { background: var(--orange); box-shadow: 0 0 0 4px rgba(255,140,0,.16); }
+  .train-marker { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 4px 12px rgba(255,140,0,.45); animation: trainPulse 1.8s ease-in-out infinite; }
+  .train-marker .ico { font-size: 15px; color: #fff; }
+  @keyframes trainPulse { 0%,100% { box-shadow: 0 4px 12px rgba(255,140,0,.45); } 50% { box-shadow: 0 4px 16px rgba(255,140,0,.75); } }
+  .train-names { position: relative; height: 14px; margin: 12px 6px 0; }
+  .train-name { position: absolute; top: 0; font-size: 11px; color: var(--txt3); transform: translateX(-50%); white-space: nowrap; }
+  .train-name.active { color: var(--orange); font-weight: 700; }
 </style>
 </head>
 <body>
@@ -290,12 +318,18 @@
     <!-- ===== ONBOARDING ===== -->
     <div class="view active" id="v-onboarding">
       <div class="body">
+        <div class="topbar">
+          <div class="brand">
+            <div class="brand-badge"><span>30</span></div>
+            <div class="brand-name">30분전</div>
+          </div>
+          <div class="hamburger tap" onclick="openMenu()" aria-label="메뉴"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></div>
+        </div>
         <div class="ob">
           <div class="ob-group-top">
-            <div class="ob-logo">30분전</div>
-            <div class="ob-tagline">30분 일찍 나서는 습관,<br>지옥철에서 탈출하세요</div>
+            <div class="ob-tagline">30분 일찍 나서는 습관, 지옥철에서 탈출하세요</div>
             <div class="ob-q">출근 목표 시간은?</div>
-            <div class="ob-hint">출근 목표 시간을 정하면 출발·기상·취침을 역산해 드려요</div>
+            <div class="ob-hint">출근 목표 시간을 정하면 출발·기상·취침 시간을<br>역산해 드려요</div>
           </div>
 
           <div class="ob-group-mid">
@@ -350,8 +384,10 @@
           <div>
             <div class="grid-title">이번 달</div>
             <div class="grid">
-              <div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell off"></div>
-              <div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell today"></div>
+              <div class="cell on">1</div><div class="cell on">2</div><div class="cell on">3</div><div class="cell on">4</div><div class="cell on">5</div><div class="cell on">6</div><div class="cell on">7</div>
+              <div class="cell on">8</div><div class="cell on">9</div><div class="cell on">10</div><div class="cell on">11</div><div class="cell on">12</div><div class="cell today">13</div><div class="cell off">14</div>
+              <div class="cell off">15</div><div class="cell off">16</div><div class="cell off">17</div><div class="cell off">18</div><div class="cell off">19</div><div class="cell off">20</div><div class="cell off">21</div>
+              <div class="cell off">22</div><div class="cell off">23</div><div class="cell off">24</div><div class="cell off">25</div><div class="cell off">26</div><div class="cell off">27</div><div class="cell off">28</div>
             </div>
           </div>
         </div>
@@ -366,7 +402,11 @@
           </div>
           <div class="routine-status">
             <div class="dot"></div>
-            <div class="status-text">어젯밤 23:27 취침 감지&nbsp;✓&nbsp;&nbsp;·&nbsp;&nbsp;오늘 06:28 알람 해제&nbsp;✓</div>
+            <div class="status-text">어젯밤 23:27 취침 감지&nbsp;✓</div>
+          </div>
+          <div class="routine-status routine-status-sub">
+            <div class="dot"></div>
+            <div class="status-text">오늘 06:28 알람 해제&nbsp;✓</div>
           </div>
         </div>
         <div class="cta tap" onclick="go('reward')">
@@ -398,7 +438,7 @@
         </div>
         <div class="push">
           <div class="push-title">지금 나가면 앉아서 출근<br>30분 뒤엔 지옥철입니다</div>
-          <div class="push-body">출근 러시 30분 전 — 지금 나서면 혼잡도 낮은 열차 탑승 가능</div>
+          <div class="push-body">출근 러시 30분 전 — 지금 나서면 혼잡도 낮은<br>열차 탑승 가능</div>
           <div class="push-actions">
             <div class="btn-ok tap" onclick="go('reward')">지금 출발</div>
             <div class="btn-skip tap" onclick="go('home')">나중에</div>
@@ -406,14 +446,32 @@
         </div>
         <div class="crowd">
           <div class="crowd-label">2호선 강남역 출근 혼잡도 예측</div>
+          <div class="crowd-bars">
           <div class="bar-row"><div class="bar-time">7:00</div><div class="bar-track"><div class="bar-fill" style="width:30%;background:#48BB78"></div></div><div class="bar-label" style="color:#48BB78">여유</div></div>
           <div class="bar-row"><div class="bar-time">7:30</div><div class="bar-track"><div class="bar-fill" style="width:65%;background:#ECC94B"></div></div><div class="bar-label" style="color:#ECC94B">보통</div></div>
           <div class="bar-row"><div class="bar-time">8:00</div><div class="bar-track"><div class="bar-fill" style="width:92%;background:#FC8181"></div></div><div class="bar-label" style="color:#FC8181">혼잡</div></div>
           <div class="bar-row"><div class="bar-time">8:30</div><div class="bar-track"><div class="bar-fill" style="width:98%;background:#F56565"></div></div><div class="bar-label" style="color:#F56565">지옥</div></div>
           <div class="bar-row"><div class="bar-time">9:00</div><div class="bar-track"><div class="bar-fill" style="width:55%;background:#ECC94B"></div></div><div class="bar-label" style="color:#ECC94B">보통</div></div>
+          </div>
         </div>
-        <div class="empathy">
-          7시에 나서면 앉아서, 8시엔 지옥철이에요.<br>30분 차이가 하루의 시작을 바꿉니다 ☀️
+        <div class="train-status">
+          <div class="train-head">
+            <div class="train-h-title"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg>실시간 열차 위치</div>
+            <div class="train-eta">강남 약 2분</div>
+          </div>
+          <div class="train-track">
+            <div class="train-rail"></div>
+            <div class="train-rail-fill" style="width:38%"></div>
+            <span class="train-dot" style="left:0%"></span>
+            <span class="train-dot active" style="left:50%"></span>
+            <span class="train-dot" style="left:100%"></span>
+            <span class="train-marker" style="left:38%"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg></span>
+          </div>
+          <div class="train-names">
+            <span class="train-name" style="left:0%">교대</span>
+            <span class="train-name active" style="left:50%">강남</span>
+            <span class="train-name" style="left:100%">역삼</span>
+          </div>
         </div>
       </div>
       <div class="nav"><div class="nav-tab tap" onclick="go('home')"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg><div class="nav-label">홈</div></div><div class="nav-tab tap" onclick="go('stats')"><svg class="ico" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg><div class="nav-label">통계</div></div><div class="nav-tab active" onclick="go('commute')"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg><div class="nav-label">혼잡도</div></div><div class="nav-tab tap" onclick="go('settings')"><svg class="ico" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></svg><div class="nav-label">설정</div></div></div>
@@ -554,7 +612,7 @@
     <!-- 슬라이드 메뉴 -->
     <div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
     <div class="menu-panel" id="menu-panel">
-      <div class="menu-head">30분전</div>
+      <div class="menu-head"><div class="brand-badge"><span>30</span></div><span>30분전</span></div>
       <div class="menu-item" onclick="closeMenu();go('home')"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg>홈</div>
       <div class="menu-item" onclick="closeMenu();go('stats')"><svg class="ico" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg>통계</div>
       <div class="menu-item" onclick="closeMenu();go('commute')"><svg class="ico" viewBox="0 0 24 24"><path d="M21 13c0 -1.65 -1.35 -3 -3 -3h-12c-1.65 0 -3 1.35 -3 3v3c0 1.65 1.35 3 3 3h12c1.65 0 3 -1.35 3 -3z"/><path d="M3 10v-3c0 -1.65 1.35 -3 3 -3h12c1.65 0 3 1.35 3 3v3"/><path d="M7 16l-2 4"/><path d="M17 16l2 4"/><path d="M8 16h8"/><path d="M3.5 13h17"/></svg>출근 혼잡도</div>
