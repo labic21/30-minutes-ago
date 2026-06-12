@@ -307,6 +307,9 @@
   .train-names { position: relative; height: 14px; margin: 12px 6px 0; }
   .train-name { position: absolute; top: 0; font-size: 11px; color: var(--txt3); transform: translateX(-50%); white-space: nowrap; }
   .train-name.active { color: var(--orange); font-weight: 700; }
+
+  /* 스크롤 컨테이너 자식 수축 방지 (짧은 뷰포트에서 콘텐츠 겹침 방지) */
+  .body > * { flex-shrink: 0; }
 </style>
 </head>
 <body>
